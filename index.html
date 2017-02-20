@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style>
+		table,th,td {
+			border:1px solid black;
+		}
+	</style>
+</head>
+<body>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pouchdb/6.1.1/pouchdb.js"></script>
+<script type="text/javascript" src="https://unpkg.com/pouchdb-find/dist/pouchdb.find.min.js"></script>
+<script type="text/javascript" src="query.js"></script>
+<div id="title"></div>
+<button onclick="getCategories()">Show categories</button>
+<button onclick="addCategory()">Add Category</button>
+<table id="tbl1"> 
+	<thead>
+		<tr>
+			<th>Category</td>		
+			<th>ID</td>
+			<th>Delete</td>	
+			<th>Show Books</th>	
+		</tr>
+	</thead>
+	<tbody id="tbody">
+		
+	</tbody>
+</table>
+<table id="tbl2" style="display:none">
+	<thead>
+		<tr>
+			<th>Title</td>		
+			<th>Description</td>
+			<th>Price</td>		
+		</tr>
+	</thead>
+	<tbody id="tbody1">
+		
+	</tbody>
+</table>
+</body>
+</html>
