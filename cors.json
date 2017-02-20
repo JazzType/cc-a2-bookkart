@@ -1,0 +1,5 @@
+{
+  "enable_cors": true, 
+  "allow_credentials": true, 
+  "origins": ["https://cc-a2-bookkart.mybluemix.net"]
+}
