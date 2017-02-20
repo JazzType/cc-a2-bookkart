@@ -1,0 +1,7 @@
+---
+applications:
+- buildpack: https://github.com/cloudfoundry/staticfile-buildpack.git
+  host: cc-a2-bookkart
+  name: bookkart
+  memory: 64M
+  stack: cflinuxfs2

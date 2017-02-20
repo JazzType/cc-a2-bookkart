@@ -1,1 +1,2 @@
-# cc-a2-bookkart
+#Bookkart Assignment #2
+Linked to an IBM Bluemix account
