@@ -15,7 +15,7 @@ function addBook()
 	var description = document.getElementById("description").value;
 	var copies = document.getElementById("copies").value;
 	var price = document.getElementById("price").value;
-	xhr.open('GET','https://295204ce-46c2-4803-a3fd-c028c41b89d9-bluemix.cloudant.com/books',true);
+	xhr.open('GET','https://295204ce-46c2-4803-a3fd-c028c41b89d9-bluemix:b9f1524b5e88baef65f76b4f33498665a4e3bbeee2efbc7392c93b14f79acc4a@295204ce-46c2-4803-a3fd-c028c41b89d9-bluemix.cloudant.com/books',true);
 	xhr.onreadystatechange = function(){
 		if(this.readyState == 4 && this.status == 200)
 		{
@@ -231,7 +231,7 @@ function getCategories()
   	}
 	};
 	var xhr2 = new XMLHttpRequest();
-	xhr2.open('GET','https://295204ce-46c2-4803-a3fd-c028c41b89d9-bluemix.cloudant.com/categories',true);
+	xhr2.open('GET','https://295204ce-46c2-4803-a3fd-c028c41b89d9-bluemix:b9f1524b5e88baef65f76b4f33498665a4e3bbeee2efbc7392c93b14f79acc4a@295204ce-46c2-4803-a3fd-c028c41b89d9-bluemix.cloudant.com/categories',true);
 	xhr2.onreadystatechange = function(){
 	console.log(query);
 	catdb.find(query).then(function (result){
