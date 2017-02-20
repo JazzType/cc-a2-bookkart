@@ -99,7 +99,7 @@ function removeCategory(categoryID) {
 
 function addCategory() {
 	var xhr = new XMLHttpRequest();
-	xhr.open('GET', 'https://295204ce-46c2-4803-a3fd-c028c41b89d9-bluemix.cloudant.com/categories/currCatID', true);
+	xhr.open('GET', 'https://295204ce-46c2-4803-a3fd-c028c41b89d9-bluemix:b9f1524b5e88baef65f76b4f33498665a4e3bbeee2efbc7392c93b14f79acc4a@295204ce-46c2-4803-a3fd-c028c41b89d9-bluemix.cloudant.com/categories/currCatID', true);
 	xhr.onreadystatechange = function() {
 		if(this.readyState == 4 && this.status == 200) {
 			currCatID = JSON.parse(this.responseText);
