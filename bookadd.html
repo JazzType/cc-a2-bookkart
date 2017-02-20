@@ -1,0 +1,24 @@
+<html>
+	<head>
+		<script src = "pouchdb-6.1.0.min.js"></script>
+		<script src = "pouchdb.find.js"></script>
+		<script src = "bookadd.js"></script>
+	</head>
+	<body onload = "dbAccess(); getCategories();" onclick = "getBooks()">
+		<form >
+			<select id = "categories"/>
+			<input type = "text" name = "title" id = "title" placeholder = "Enter Book Title" required /><br/>
+			<input type = "number" name = "isbn" id = "isbn" placeholder = "Enter ISBN" required />
+			<input type = "text" name = "autdor" id = "autdor" placeholder = "Enter Book Autdor" required /><br/>
+			<input type = "textarea" name = "description" id = "description" placeholder = "Enter a brief description" required /><br/>
+			<input type = "number" name = "copies" id = "copies" placeholder = "Enter Number of Copies to Add" required /><br/>
+			<input type = "number" name = "price" id = "price" placeholder = "Enter Price" required /><br/>
+			<button type = "button" onclick = "addBook()" name = "Add Book">Add Book</button>
+			<button type = "button" onclick = "getBooks()">Get Books</button>
+		</form>
+		<table id = "tbody" style="border: 1px solid black; border-collapse: none">
+		<tr>
+		</tr>
+		</table>
+	</body>
+</html>
