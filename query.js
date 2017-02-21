@@ -113,14 +113,11 @@ function addCategory() {
 				_rev: currCatID._rev,
 				value: currCatID.value+1
 			});
-		}
-	};
+		
+	
 	}).catch(function (err) {
 		console.log(err);
-	})
-	
-
-
+	});
 }
 function showBooks(bookArr){
 	var tr;
