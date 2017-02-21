@@ -223,10 +223,10 @@ function getCategories()
   	"selector": {
     	"category_id": {
       	"$gt": -1
-  		}
-  	}
-	catdb.get('categories').then(function(){
+	  		}
+	  	}
 	};
+	catdb.get('categories').then(function(){
 	console.log(query);
 	catdb.find(query).then(function (result){
 		console.log(result.docs);
