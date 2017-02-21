@@ -7,7 +7,6 @@ function dbAccess()
 }
 function addBook()
 {
-	var xhr = new XMLHttpRequest();
 	var category = document.getElementById("categories").value;
 	var title = document.getElementById("title").value;
 	var isbn = document.getElementById("isbn").value;
@@ -15,27 +14,24 @@ function addBook()
 	var description = document.getElementById("description").value;
 	var copies = document.getElementById("copies").value;
 	var price = document.getElementById("price").value;
-	xhr.open('GET','https://295204ce-46c2-4803-a3fd-c028c41b89d9-bluemix:b9f1524b5e88baef65f76b4f33498665a4e3bbeee2efbc7392c93b14f79acc4a@295204ce-46c2-4803-a3fd-c028c41b89d9-bluemix.cloudant.com/books',true);
-	xhr.onreadystatechange = function(){
-		if(this.readyState == 4 && this.status == 200)
-		{
-			db.post({
-				"category":category,
-				"title": title,
-				"_id":isbn,
-				"author": author,
-				"description": description,
-				"copies": copies,
-				"price": price
-
-			}).then(function (response){
-				console.log(response);
-			}).catch(function(err) {
-				console.log(err);
-			});
-		}
-	};
-	xhr.send();
+	db.get('books').then(function(){
+		db.post({
+			"category":category,
+			"title": title,
+			"_id":isbn,
+			"author": author,
+			"description": description,
+			"copies": copies,
+			"price": price
+			
+		}).then(function (response){ 
+			console.log(response);
+		}).catch(function(err) {
+			console.log(err);
+		});
+	});
+	
+	
 }
 function getBooks()
 {
@@ -72,11 +68,11 @@ function showBooks(arr)
 	var th;
 	var delBtn;
 	var curr_id;
-
+	
 	for(var i = 0; i < arr.length; i++) {
 		if(arr[i].copies > 0)
 		{
-			tr = document.createElement('tr');
+			tr = document.createElement('tr');	
 			td = document.createElement('td');
 			td.innerHTML = arr[i].category;
 			tr.appendChild(td);
@@ -108,7 +104,7 @@ function showBooks(arr)
 				getBooks();
 			};
 			delBtn.innerHTML = 'Delete';
-			td.appendChild(delBtn);
+			td.appendChild(delBtn);		
 			tr.appendChild(td);
 
 			td = document.createElement('td');
@@ -120,7 +116,7 @@ function showBooks(arr)
 				getBooks();
 			};
 			chngBtn.innerHTML = 'Change Price';
-			td.appendChild(chngBtn);
+			td.appendChild(chngBtn);		
 			tr.appendChild(td);
 
 			td = document.createElement('td');
@@ -132,7 +128,7 @@ function showBooks(arr)
 				getBooks();
 			};
 			buyBtn.innerHTML = 'Buy one copy';
-			td.appendChild(buyBtn);
+			td.appendChild(buyBtn);		
 			tr.appendChild(td);
 
 			tbody.appendChild(tr);
@@ -163,8 +159,8 @@ function buyBook(bookID)
 		db.bulkDocs(result.docs);
 	}).catch(function (err) {
 			console.log(err);
-		});
-
+		});	
+	
 	getBooks();
 }
 
@@ -186,8 +182,8 @@ function repriceBook(bookID)
 		db.bulkDocs(result.docs);
 	}).catch(function (err) {
 			console.log(err);
-		});
-
+		});	
+	
 	getBooks();
 }
 
@@ -209,11 +205,11 @@ function removeBook(bookID)
 		db.bulkDocs(result.docs);
 	}).catch(function (err) {
 			console.log(err);
-		});
+		});	
 	db.find(query).then(function (result) {
-		console.log(result);
+		console.log(result);		
 			result.docs[0]._deleted = true;
-			db.put(result.docs[0]);
+			db.put(result.docs[0]);		
 	}).catch(function (err) {
 
 		console.log(err);
@@ -229,10 +225,8 @@ function getCategories()
       	"$gt": -1
   		}
   	}
+	catdb.get('categories').then(function(){
 	};
-	var xhr2 = new XMLHttpRequest();
-	xhr2.open('GET','https://295204ce-46c2-4803-a3fd-c028c41b89d9-bluemix:b9f1524b5e88baef65f76b4f33498665a4e3bbeee2efbc7392c93b14f79acc4a@295204ce-46c2-4803-a3fd-c028c41b89d9-bluemix.cloudant.com/categories',true);
-	xhr2.onreadystatechange = function(){
 	console.log(query);
 	catdb.find(query).then(function (result){
 		console.log(result.docs);
@@ -240,6 +234,5 @@ function getCategories()
 	}).catch(function (err){
 		console.log(err);
 	});
-	}
-	xhr2.send();
+	});
 }
